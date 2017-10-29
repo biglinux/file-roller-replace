@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+package_name=file-roller-replace
+mkdir -p "/usr/share/dpkgdivert/file-roller-replace"
+case "$1" in
+  install)
+	ln -s /usr/bin/engrampa /usr/bin/file-roller
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/file-roller-replace/usrshareapplicationsengrampa.desktop" --rename "/usr/share/applications/engrampa.desktop"
+    ;;
+  upgrade)
+if [ "$(dpkg-divert --list "/usr/share/applications/engrampa.desktop")" = "" ]
+then
+    dpkg-divert --package "$package_name" --divert "/usr/share/dpkgdivert/file-roller-replace/usrshareapplicationsengrampa.desktop" --rename "/usr/share/applications/engrampa.desktop"
+fi
+;;
+esac
+exit 0

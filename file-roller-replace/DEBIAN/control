@@ -1,0 +1,14 @@
+Package: file-roller-replace
+Version: 1.0.1-1big1
+Depends: engrampa
+Conflicts: file-roller
+Replaces: file-roller
+Provides: file-roller
+Architecture: all
+Maintainer: Bruno Goncalves <www.biglinux.com.br>
+Section: admin
+Priority: optional
+Installed-Size:3488
+Description: Replaces file roller for engrampa
+
+

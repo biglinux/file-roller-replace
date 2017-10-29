@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+package_name=file-roller-replace
+case "$1" in
+  remove)
+	rm -f /usr/bin/file-roller
+    dpkg-divert --package "$package_name" --rename --remove "/usr/share/applications/engrampa.desktop"
+    ;;
+  purge)
+	rm -f /usr/bin/file-roller
+    dpkg-divert --package "$package_name" --rename --remove "/usr/share/applications/engrampa.desktop"
+;;
+esac
+exit 0
